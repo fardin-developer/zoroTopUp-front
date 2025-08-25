@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [siteConfig, setSiteConfig] = useState({ name: 'CP TOP UP', logo: '/cplogo.jpeg' })
+  const [siteConfig, setSiteConfig] = useState({ name: 'Zoro Top Up', logo: '/zoro-logo.png' })
   const [logoError, setLogoError] = useState(false)
   const [isClient, setIsClient] = useState(false)
   // Redux state
@@ -92,13 +92,16 @@ const Navbar = () => {
               className="text-2xl sm:text-3xl font-bold shimmer hover:scale-105 transition-transform duration-300 flex items-center space-x-2"
             >
               {!logoError && siteConfig.logo ? (
-                <img 
-                  className='w-28' 
-                  src='/cp-logo.png' 
+                <div>
+                  <img 
+                  className="w-12 h-auto"
+                  src={siteConfig.logo} 
                   alt={`${siteConfig.name} Logo`}
                   onError={() => setLogoError(true)}
                   onLoad={() => setLogoError(false)}
                 />
+                
+                </div>
               ) : (
                 <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   {siteConfig.name}

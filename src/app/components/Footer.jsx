@@ -4,14 +4,17 @@ import Link from 'next/link'
 import { getSiteConfig } from '../utils/siteConfig'
 
 const Footer = () => {
-  const [siteConfig, setSiteConfig] = useState({ name: 'Zennova' })
+  const [siteConfig, setSiteConfig] = useState({ name: 'Zennova', logo: '/zoro-logo.png' })
   const [isClient, setIsClient] = useState(false)
+  const [logoError, setLogoError] = useState(false)
 
   useEffect(() => {
     // Mark as client-side to prevent hydration mismatch
     setIsClient(true)
     // Update site config on client side
     setSiteConfig(getSiteConfig())
+    // Reset logo error when site config changes
+    setLogoError(false)
   }, [])
 
   return (
@@ -20,7 +23,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-[#64ffda]">{siteConfig.name}</h3>
+            <div className="flex items-center space-x-2">
+              {!logoError && siteConfig.logo ? (
+                <img 
+                  className="w-16 h-auto"
+                  src={siteConfig.logo} 
+                  alt={`${siteConfig.name} Logo`}
+                  onError={() => setLogoError(true)}
+                  onLoad={() => setLogoError(false)}
+                />
+              ) : (
+                <h3 className="text-2xl font-bold text-[#64ffda]">{siteConfig.name}</h3>
+              )}
+            </div>
             <p className="text-white/70 text-sm leading-relaxed">
             We provide a secure and efficient platform for gamers to instantly acquire diamonds, coins, and in-game credits at competitive prices.
             </p>

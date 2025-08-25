@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #38bdf8; /* Modern blue/cyan */
-  --color-primary-dark: #0ea5e9;
-  --color-secondary: #fbbf24; /* Gold/yellow */
-  --color-accent: #f472b6; /* Pink accent */
+  --color-primary: #F54849; /* Red accent */
+  --color-primary-dark: #d93f3f;
+  --color-secondary: #ffffff; /* White */
+  --color-accent: #F54849; /* Red accent */
   --color-success: #22c55e;
   --color-warning: #f59e42;
-  --color-error: #ef4444;
+  --color-error: #F54849;
   --color-surface: #18181b; /* Main card/bg surface */
   --color-surface-light: #23272f;
   --color-border: #334155;
-  --color-text: #f1f5f9;
-  --color-text-muted: #94a3b8;
-  --color-bg:  #242425;
+  --color-text: #ffffff; /* White text */
+  --color-text-muted: #cccccc; /* Light gray text */
+  --color-bg:  #040404;
 }
 
 :root {
@@ -24,7 +24,7 @@ body.light {
   --color-bg: #242425;
   --color-primary: #2563eb;
   --color-primary-dark: #1d4ed8;
-  --color-secondary: #fbbf24;
+  --color-secondary: #6b7280;
   --color-accent: #f472b6;
   --color-success: #22c55e;
   --color-warning: #f59e42;
@@ -40,7 +40,7 @@ body.dark {
   --color-bg: #ffffff;
   --color-primary: #38bdf8;
   --color-primary-dark: #0ea5e9;
-  --color-secondary: #fbbf24;
+  --color-secondary: #6b7280;
   --color-accent: #f472b6;
   --color-success: #22c55e;
   --color-warning: #f59e42;

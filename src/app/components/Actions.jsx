@@ -6,18 +6,18 @@ const actions = [
     label: 'Add Money',
     icon: '/add-money.png',
     color: 'primary',
-    bgColor: 'bg-[#38bdf8]',
-    hoverBg: 'hover:bg-[#0ea5e9]',
-    glowColor: 'hover:shadow-[#38bdf8]/30',
+    bgColor: 'bg-[#F54849]',
+    hoverBg: 'hover:bg-[#d93f3f]',
+    glowColor: 'hover:shadow-[#F54849]/30',
     action: 'add-balance',
   },
   {
     label: 'Transactions',
     icon: '/add-money1.png',
     color: 'secondary',
-    bgColor: 'bg-[#fbbf24]',
-    hoverBg: 'hover:bg-[#f59e0b]',
-    glowColor: 'hover:shadow-[#fbbf24]/30',
+    bgColor: 'bg-white',
+    hoverBg: 'hover:bg-gray-100',
+    glowColor: 'hover:shadow-white/30',
     action: 'navigate',
     href: '/transactions',
   },
@@ -25,9 +25,9 @@ const actions = [
     label: 'History',
     icon: '/add-money2.png',
     color: 'accent',
-    bgColor: 'bg-[#f472b6]',
-    hoverBg: 'hover:bg-[#ec4899]',
-    glowColor: 'hover:shadow-[#f472b6]/30',
+    bgColor: 'bg-[#F54849]',
+    hoverBg: 'hover:bg-[#d93f3f]',
+    glowColor: 'hover:shadow-[#F54849]/30',
     action: 'navigate',
     href: '/orders',
   },
@@ -35,9 +35,9 @@ const actions = [
     label: 'Report',
     icon: '/file.svg',
     color: 'success',
-    bgColor: 'bg-[#22c55e]',
-    hoverBg: 'hover:bg-[#16a34a]',
-    glowColor: 'hover:shadow-[#22c55e]/30',
+    bgColor: 'bg-white',
+    hoverBg: 'hover:bg-gray-100',
+    glowColor: 'hover:shadow-white/30',
     action: 'navigate',
     href: '/report',
   },
@@ -103,21 +103,21 @@ const AddBalanceModal = ({ open, onClose }) => {
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
                 placeholder="Enter amount"
-                className="w-full rounded-xl px-4 py-3 bg-[#23272f] border border-[#334155] text-[#f1f5f9] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all duration-200"
+                className="w-full rounded-xl px-4 py-3 bg-[#23272f] border border-[#334155] text-white placeholder:text-gray-400 focus:outline-none focus:border-[#F54849] focus:ring-1 focus:ring-[#F54849] transition-all duration-200"
                 disabled={loading}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
               />
             </div>
 
             {error && (
-              <div className="text-[#ef4444] text-sm text-center bg-[#ef4444]/10 border border-[#ef4444]/20 rounded-lg py-2 px-3">
+              <div className="text-[#F54849] text-sm text-center bg-[#F54849]/10 border border-[#F54849]/20 rounded-lg py-2 px-3">
                 {error}
               </div>
             )}
 
             <button
               onClick={handleSubmit}
-              className="w-full py-3 rounded-xl bg-[#38bdf8] hover:bg-[#0ea5e9] text-white font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-[#38bdf8]/20 active:scale-[0.98]"
+              className="w-full py-3 rounded-xl bg-[#F54849] hover:bg-[#d93f3f] text-white font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-[#F54849]/20 active:scale-[0.98]"
               disabled={loading}
             >
               {loading ? 'Processing...' : 'Add Balance'}
@@ -153,9 +153,9 @@ const Actions = () => {
               className={`
                 group flex flex-col items-center justify-center aspect-square rounded-2xl pt-4 pb-4
                 bg-gray-700 border border-[#334155] 
-                hover:border-[#38bdf8]/50 hover:-translate-y-1 hover:shadow-xl
+                hover:border-[#F54849]/50 hover:-translate-y-1 hover:shadow-xl
                 ${action.glowColor}
-                focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-[#38bdf8]
+                focus:outline-none focus:ring-2 focus:ring-[#F54849]/50 focus:border-[#F54849]
                 transition-all duration-300 ease-out transform-gpu
                 active:scale-95 active:translate-y-0 md:w-4/5 lg:w-4/5
               `}
@@ -169,7 +169,8 @@ const Actions = () => {
                 transition-all duration-300 group-hover:scale-110
               `}>
                 <img 
-                  className="w-5 h-4 md:w-6 md:h-6 object-contain filter brightness-0 invert" 
+                  className={`w-5 h-4 md:w-6 md:h-6 object-contain ${action.bgColor === 'bg-white' ? 'filter brightness-0' : 'filter brightness-0 invert'}`}
+                  style={{ filter: action.bgColor === 'bg-white' ? 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(340deg) brightness(104%) contrast(97%)' : 'brightness(0) invert(1)' }}
                   src={action.icon} 
                   alt={action.label} 
                 />
@@ -179,7 +180,7 @@ const Actions = () => {
                 {action.label}
               </span>
 
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#334155] rounded-full transition-all duration-300 group-hover:w-8 group-hover:bg-[#38bdf8]"></div>
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#334155] rounded-full transition-all duration-300 group-hover:w-8 group-hover:bg-[#F54849]"></div>
             </button>
           ))}
         </div>

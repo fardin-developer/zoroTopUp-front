@@ -71,12 +71,15 @@ export function getSiteLogo() {
     return '/cplogo.jpeg'; // This logo may not exist, will fallback to text
   }
   
+  // Use zoro-logo.png for current domain
+  return '/zoro-logo.png';
+  
   // Add more domain-specific logos here
   // if (hostname.includes('yourdomain')) {
   //   return '/yourdomain-logo.png';
   // }
   
-  return '/zenova.png'; // Default logo
+  return '/zoro-logo.png'; // Default logo
 }
 
 // Function to get site configuration
